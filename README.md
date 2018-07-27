@@ -58,3 +58,13 @@ Visiting `/sweets` will list all of the sweets. Visiting `/vendors` will list al
 + Read through this documentation if your having a bit of trouble figuring out how to make the [dropdown](http://guides.rubyonrails.org/form_helpers.html#making-select-boxes-with-ease)
 
 + Also remember that [Validations are very important](http://guides.rubyonrails.org/active_record_validations.html)
+
+
+## Submission
+
+Do not push your changes up to Github. When you finish:
+
+1. If you haven't already, create a custom branch with `git checkout -b custom_branch`.
+1. `git add` and `git commit` your changes.
+1. From you custom branch, run `git format-patch master --stdout > your_name.patch`, replacing `your_name` with your first and last name.
+1. Send the patch file to your instructor on Connect before the specified time. Remember, you can use `open .` to launch a Finder window from your current directory, and then drag your file into Connect.
