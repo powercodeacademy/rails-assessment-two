@@ -45,11 +45,9 @@ Visiting `/sweets` will list all of the sweets. Visiting `/vendors` will list al
   * Select a sweet from a dropdown.
   * Leave a comment.
 
-9. Make sure that every `vendor_sweet` association record **MUST** include a sweet and a comment.
+9. Make sure a user cannot create a `vendor_sweet` without a comment & a sweet.
 
-10. Make sure a user cannot add more than one of the same sweets to a vendor.
-
-11. After submitting this form we should end up in the same view we were just on, but this time we should be able to see the sweet along with its comment.
+10. After submitting this form, we should end up in the same view we were just on, but this time we should be able to see the sweet along with its comment.
 
 ### Hints / Tips
 
@@ -60,7 +58,6 @@ Visiting `/sweets` will list all of the sweets. Visiting `/vendors` will list al
 + Read through this documentation if your having a bit of trouble figuring out how to make the [dropdown](http://guides.rubyonrails.org/form_helpers.html#making-select-boxes-with-ease)
 
 + Also remember that [Validations are very important](http://guides.rubyonrails.org/active_record_validations.html)
-
 
 ## Submission
 
