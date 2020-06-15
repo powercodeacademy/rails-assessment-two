@@ -31,7 +31,7 @@ Visiting `/sweets` will list all of the sweets. Visiting `/vendors` will list al
 
 2. On the sweets index page, clicking on a sweet's name should take us to the sweet's show view.
 
-3. Create the `vendor_sweet` join table and associate vendors and sweets.
+3. Create the `vendor_sweet` join table and associate vendors and sweets. (It may be helpful to use your `rails console` to create some join records after database schema is set up.)
 
 4. On the sweet show view, include the sweet's name and have a list of all the vendors that sell this sweet.
 
