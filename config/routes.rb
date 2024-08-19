@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   get '/vendors/:id', to: 'vendors#show', as: "vendor"
   get '/sweets/:id', to: 'sweets#show', as: "sweet"
 
+  post '/vendor_sweets', to: 'vendor_sweets#create', as: 'vendor_sweets'
+
 end
