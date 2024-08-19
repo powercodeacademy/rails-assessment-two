@@ -5,4 +5,38 @@
   <% @vendor.sweets.each do |sweet| %>
     <li> <%= sweet.name %></li>
   <% end %>
-<ul>
+</ul>
+
+<% if @vendor_sweet.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@vendor_sweet.errors.count, "error") %> prohibited this sweet from being added:</h2>
+    <ul>
+      <% @vendor_sweet.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+
+<h2>Add Sweet to This Vendor</h2>
+<%= form_for @vendor_sweet do |f| %>
+  <%= f.hidden_field :vendor_id, value: @vendor.id %>
+
+  <p>
+    <%= f.label :sweet_id, "Select Sweet" %><br>
+    <%= f.collection_select :sweet_id, Sweet.all, :id, :name %>
+  </p>
+
+  <p>
+    <%= f.label :comment, "Comment" %><br>
+    <%= f.text_area :comment %>
+  </p>
+
+  <div>
+    <%= f.submit "Add Sweet" %>
+  </div>
+<% end %>
+
+
