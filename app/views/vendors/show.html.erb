@@ -6,3 +6,22 @@
     <li><%= sweet.name %></li>
   <% end %>
 </ul>
+
+<h2>Add Sweet</h2>
+<%= form_with model: @vendor_sweet do |f| %>
+  <%= f.hidden_field :vendor_id, value: @vendor.id %>
+
+  <div>
+    <%= f.label :sweet_id %>
+    <br>
+    <%= f.collection_select :sweet_id, @sweets, :id, :name %>
+  </div>
+
+  <div>
+    <%= f.label :comment %>
+    <br>
+    <%= f.text_field :comment %>
+  </div>
+
+  <%= f.submit %>
+<% end %>
