@@ -8,6 +8,7 @@
 
 Vendor.destroy_all
 Sweet.destroy_all
+VendorSweet.destroy_all
 
 vendors = [
   "Insomnia Cookies",
@@ -27,10 +28,12 @@ sweets = [
   "Peanut Butter Icecream Cake",
 ]
 
-vendors.each do |vendor|
-  Vendor.create(name: vendor)
-end
-
 sweets.each do |sweet|
   Sweet.create(name: sweet)
+end
+
+sweets = Sweet.all
+
+vendors.each_with_index do |vendor, index|
+  Vendor.create(name: vendor, sweets: [sweets[index]])
 end
