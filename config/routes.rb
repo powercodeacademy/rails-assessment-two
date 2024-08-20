@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  resources :sweets, only: :index
+  resources :sweets, only: %i[index show]
   resources :vendors, only: %i[index show]
 end
