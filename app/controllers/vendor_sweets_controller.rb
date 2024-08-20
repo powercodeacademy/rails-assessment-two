@@ -1,8 +1,13 @@
 class VendorSweetsController < ApplicationController
   def create
-    vendor_sweet = VendorSweet.create!(vendor_sweet_params)
+    @vendor_sweet = VendorSweet.new(vendor_sweet_params)
+    @vendor = @vendor_sweet.vendor
 
-    redirect_to vendor_path(vendor_sweet.vendor)
+    if @vendor_sweet.save
+      redirect_to vendor_path(@vendor)
+    else
+      render "vendors/show"
+    end
   end
 
   private

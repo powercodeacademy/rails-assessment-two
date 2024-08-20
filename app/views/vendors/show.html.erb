@@ -1,20 +1,30 @@
+<% if @vendor_sweet.errors.any? %>
+  <h2><%= pluralize(@vendor_sweet.errors.count, "error") %> prohibited saving:</h2>
+
+  <ul>
+    <% @vendor_sweet.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <h1><%= @vendor.name %></h1>
 
 <h2>Sweets</h2>
 <ul>
-  <% @vendor.sweets.each do |sweet| %>
-    <li><%= sweet.name %></li>
+  <% @vendor.vendor_sweets.each do |vendor_sweet| %>
+    <li><%= vendor_sweet.sweet.name %>: <%= vendor_sweet.comment %></li>
   <% end %>
 </ul>
 
 <h2>Add Sweet</h2>
-<%= form_with model: @vendor_sweet do |f| %>
+<%= form_with model: @vendor_sweet, local: true do |f| %>
   <%= f.hidden_field :vendor_id, value: @vendor.id %>
 
   <div>
     <%= f.label :sweet_id %>
     <br>
-    <%= f.collection_select :sweet_id, @sweets, :id, :name, include_blank: "PICK ONE!!!!!!" %>
+    <%= f.collection_select :sweet_id, Sweet.all, :id, :name, include_blank: "PICK ONE!!!!!!" %>
   </div>
 
   <div>
