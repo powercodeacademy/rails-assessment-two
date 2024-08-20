@@ -7,6 +7,12 @@
   <% end %>
 </ul>
 
+<ul>
+  <% @vendor.vendor_sweets.each do |vs| %>
+    <li> <%= vs.comment %></li>
+  <% end %>
+</ul>
+
 <% if @vendor_sweet.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(@vendor_sweet.errors.count, "error") %> prohibited this sweet from being added:</h2>
