@@ -1,36 +1,36 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
+# Clear existing data
+VendorSweet.destroy_all
 Vendor.destroy_all
 Sweet.destroy_all
 
-vendors = [
-  "Insomnia Cookies",
-  "Cookies Cream",
-  "Carvel",
-  "Gregory's Coffee",
-  "Duane Park Patisserie",
-  "Tribeca Treats",
-]
-
+# Create some sweets
 sweets = [
-  "Chocolate Chip Cookie",
-  "Chocolate Chunk Cookie",
-  "M&Ms Cookie",
-  "White Chocolate Cookie",
-  "Brownie",
-  "Peanut Butter Icecream Cake",
+  Sweet.create(name: "Chocolate Bar"),
+  Sweet.create(name: "Candy Cane"),
+  Sweet.create(name: "Lollipop"),
+  Sweet.create(name: "Gummy Bears"),
+  Sweet.create(name: "Marshmallows")
 ]
 
-vendors.each do |vendor|
-  Vendor.create(name: vendor)
-end
+# Create some vendors
+vendors = [
+  Vendor.create(name: "Sweet Tooth"),
+  Vendor.create(name: "Candy Land"),
+  Vendor.create(name: "Sugar Rush"),
+  Vendor.create(name: "Choco Delight"),
+  Vendor.create(name: "Gummy Galore")
+]
 
-sweets.each do |sweet|
-  Sweet.create(name: sweet)
-end
+# Associate vendors with sweets and add a comment
+VendorSweet.create(vendor: vendors[0], sweet: sweets[0], comment: "Best-selling chocolate bar!")  # Sweet Tooth sells Chocolate Bar
+VendorSweet.create(vendor: vendors[0], sweet: sweets[1], comment: "Perfect for the holidays!")   # Sweet Tooth sells Candy Cane
+VendorSweet.create(vendor: vendors[1], sweet: sweets[2], comment: "Kids love these lollipops!")   # Candy Land sells Lollipop
+VendorSweet.create(vendor: vendors[1], sweet: sweets[3], comment: "Gummy bears are a classic!")   # Candy Land sells Gummy Bears
+VendorSweet.create(vendor: vendors[2], sweet: sweets[4], comment: "Fluffy and sweet marshmallows!") # Sugar Rush sells Marshmallows
+VendorSweet.create(vendor: vendors[2], sweet: sweets[0], comment: "Chocolate bars are a hit!")     # Sugar Rush sells Chocolate Bar
+VendorSweet.create(vendor: vendors[3], sweet: sweets[1], comment: "Candy canes all year round!")   # Choco Delight sells Candy Cane
+VendorSweet.create(vendor: vendors[3], sweet: sweets[2], comment: "Delightful lollipops!")        # Choco Delight sells Lollipop
+VendorSweet.create(vendor: vendors[4], sweet: sweets[3], comment: "Best gummy bears in town!")    # Gummy Galore sells Gummy Bears
+VendorSweet.create(vendor: vendors[4], sweet: sweets[4], comment: "Perfect for roasting!")        # Gummy Galore sells Marshmallows
+
+puts "Seeding completed!"

@@ -1,0 +1,20 @@
+<h1><%=@vendor.name%></h1>
+
+<h2> Comments </h2>
+<ul>
+  <% @vendor.vendor_sweets.each do |vendor_sweet| %>
+    <li><%= link_to vendor_sweet.sweet.name, sweet_path(vendor_sweet.sweet) %> - <%= vendor_sweet.comment %></li>
+  <% end  %>
+</ul>
+
+
+
+<%= form_for @vendor_sweet do |f|%>
+ <div class="field">
+    <%= f.hidden_field :vendor_id, value: @vendor.id%>
+    <%= f.label :sweet_id, "Select Sweet" %><br>
+    <%= f.collection_select :sweet_id, Sweet.all, :id, :name %><br>
+    <%= f.text_field :comment %>
+    <%= f.submit "Add Sweet"%>
+  </div>
+  <% end %>
