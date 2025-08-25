@@ -10,15 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_08_25_172000) do
-  create_table "comments", force: :cascade do |t|
-    t.integer "sweet_id", null: false
-    t.string "comment"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["sweet_id"], name: "index_comments_on_sweet_id"
-  end
-
+ActiveRecord::Schema[7.1].define(version: 2025_08_25_190745) do
   create_table "sweets", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: nil, null: false
@@ -30,6 +22,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_08_25_172000) do
     t.integer "sweet_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "comment"
     t.index ["sweet_id"], name: "index_vendor_sweets_on_sweet_id"
     t.index ["vendor_id"], name: "index_vendor_sweets_on_vendor_id"
   end
@@ -40,7 +33,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_08_25_172000) do
     t.datetime "updated_at", precision: nil, null: false
   end
 
-  add_foreign_key "comments", "sweets"
   add_foreign_key "vendor_sweets", "sweets"
   add_foreign_key "vendor_sweets", "vendors"
 end
