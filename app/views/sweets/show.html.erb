@@ -3,6 +3,6 @@
 <h3>Vendors: </h3>
 <ul>
   <% @sweet.vendors.each do |vendor| %>
-  <li><%= vendor.name %>
+  <li><%= link_to vendor.name, vendor_path(vendor) %>
   <% end %>
 </ul>
