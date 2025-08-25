@@ -5,6 +5,7 @@ class SweetsController < ApplicationController
   end
 
   def show
+    @sweet.comments.build
   end
 
   def update
@@ -21,6 +22,6 @@ private
   end
 
   def sweet_params
-    params.require(:sweet).permit(:comment)
+    params.require(:sweet).permit(comments_attributes: [:comment])
   end
 end

@@ -12,5 +12,9 @@
 
 <%= render 'form' %>
 
-<h3>Comment</h3>
-<p><%= @sweet.comment %></p>
+<h3>Reviews:</h3>
+  <ul>
+  <% @sweet.comments.select(&:persisted?).each do |comment| %>
+    <li><%= comment.comment %></li>
+  <% end %>
+  </ul>
