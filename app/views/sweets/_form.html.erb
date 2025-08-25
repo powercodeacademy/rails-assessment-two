@@ -1,0 +1,5 @@
+<h3>Add a comment</h3>
+<%= form_with model: @sweet, url: sweet_path(@sweet), method: :patch, local: true do |f| %>
+  <%= f.text_field :comment %>
+  <%= f.submit "Save" %>
+<% end %>
