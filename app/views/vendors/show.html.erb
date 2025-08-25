@@ -3,5 +3,9 @@
 <p>
   <h3>Name:</h3>
   <%= @vendor.name %>
-  <h3>Info:</h3>
-  <%= @vendor.name %>
+<h3>Whatw e sell:</h3>
+  <ul>
+  <% @vendor.sweets.each do |vendor| %>
+    <li><%= link_to vendor.name, vendor %></li>
+  <% end  %>
+</ul>
