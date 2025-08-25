@@ -5,10 +5,23 @@ class VendorsController < ApplicationController
   end
 
   def show
+    @vendor.vendor_sweets.build
+  end
+
+  def update
+    if @vendor.update(vendor_params)
+      redirect_to @vendor
+    else
+      render :show
+    end
   end
 
 private
   def set_vendor
       @vendor = Vendor.find(params[:id])
+  end
+
+  def vendor_params
+    params.require(:vendor).permit(vendor_sweets_attributes: [:sweet_id])
   end
 end

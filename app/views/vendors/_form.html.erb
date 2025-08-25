@@ -1,0 +1,8 @@
+<h3>Add a sweet to this vendor</h3>
+<%= form_for @vendor do |f| %>
+  <%= f.fields_for :vendor_sweets, @vendor.vendor_sweets.build do |vs| %>
+    <h3>Sweet</h3>
+    <%= vs.collection_select :sweet_id, Sweet.where.not(id: @vendor.sweet_ids), :id, :name%>
+  <% end %>
+  <%= f.submit "Add Sweet" %>
+<% end %>
