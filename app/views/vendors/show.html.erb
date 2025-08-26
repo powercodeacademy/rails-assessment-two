@@ -4,13 +4,35 @@
   <h3>Name: <%= @vendor.name %></h3>
 <h3>What we sell:</h3>
   <ul>
-  <% @vendor.sweets.each do |sweet| %>
+  <% @vendor.sweets.uniq.each do |sweet| %>
     <li><%= link_to sweet.name, sweet %></li>
   <% end  %>
   </ul>
   </br>
 
-<%= render 'form' %>
+<h3>Sweet-Comments Section</h3>
+
+<%= form_with model: @vendor, local: true do |f| %>
+
+  <% if @vendor.errors.any? %>
+    <div id="error_explanation">
+      <h5><%= pluralize(@vendor.errors.count, "error") %> prohibited this vendor from being saved:</h5>
+      <ul>
+        <% @vendor.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %> 
+
+  <%= f.fields_for :vendor_sweets, @new_vendor_sweet_comment do |vs| %>
+    <h3>Comment</h3>
+      <%= vs.collection_select :sweet_id, Sweet.all, :id, :name, { prompt: "Select a sweet" } %>
+      <%= vs.text_field :comment, placeholder: "Enter comment" %>
+    <% end %>
+  <%= f.submit "Add Comment" %>
+<% end %>
+
  </br>
 
 <h3>Comments:</h3>

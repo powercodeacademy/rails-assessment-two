@@ -40,5 +40,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Note: Removed deprecated gems: sass-rails, uglifier, coffee-rails, jquery-rails, turbolinks, jbuilder
 
 
-
-
+gem 'pry'
