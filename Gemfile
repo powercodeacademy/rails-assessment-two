@@ -26,6 +26,7 @@ gem 'webrick', group: [:development, :test]
 
 group :development, :test do
   gem 'byebug', platform: :mri
+  gem 'pry'
 end
 
 
@@ -38,7 +39,3 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Note: Removed deprecated gems: sass-rails, uglifier, coffee-rails, jquery-rails, turbolinks, jbuilder
-
-
-
-
