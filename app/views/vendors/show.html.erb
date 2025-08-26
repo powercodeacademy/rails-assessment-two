@@ -1,13 +1,21 @@
 <p id="vendor-info"><%= notice %></p>
 
 <p>
-  <h3>Name:</h3>
-  <%= @vendor.name %>
+  <h3>Name: <%= @vendor.name %></h3>
 <h3>What we sell:</h3>
   <ul>
   <% @vendor.sweets.each do |sweet| %>
     <li><%= link_to sweet.name, sweet %></li>
   <% end  %>
-</ul>
+  </ul>
+  </br>
 
 <%= render 'form' %>
+ </br>
+
+<h3>Comments:</h3>
+<ul>
+  <% @vendor.vendor_sweets.select(&:persisted?).each do |vendor_sweet| %>
+    <li><%= vendor_sweet.sweet.name %> : <%= vendor_sweet.comment %> </li>
+  <% end %>
+</ul>

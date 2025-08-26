@@ -1,5 +1,7 @@
 class VendorSweet < ApplicationRecord
   belongs_to :vendor
   belongs_to :sweet
-  has_many :comments
+  
+  validates :comment, presence: true, length: { minimum: 1 }
+  validates :sweet, presence: true
 end

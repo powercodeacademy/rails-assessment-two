@@ -5,13 +5,14 @@ class VendorsController < ApplicationController
   end
 
   def show
-    @vendor.vendor_sweets.build
+    @new_vendor_sweet_comment = @vendor.vendor_sweets.build
   end
 
   def update
     if @vendor.update(vendor_params)
       redirect_to @vendor
     else
+      @new_vendor_sweet_comment = @vendor.vendor_sweets.build
       render :show
     end
   end
@@ -22,6 +23,6 @@ private
   end
 
   def vendor_params
-    params.require(:vendor).permit(vendor_sweets_attributes: [:sweet_id])
+    params.require(:vendor).permit(vendor_sweets_attributes: [:sweet_id, :vendor_id, :comment])
   end
 end
