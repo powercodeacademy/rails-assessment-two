@@ -7,7 +7,12 @@ class VendorSweetsController < ApplicationController
 
   def create 
     @vendor_sweet = VendorSweet.new(vendor_sweet_params)
-    redirect_to vendor_path(@vendor_sweet.vendor) if @vendor_sweet.save 
+    if @vendor_sweet.save 
+      redirect_to vendor_path(@vendor_sweet.vendor) 
+    else 
+      @vendor = Vendor.find(@vendor_sweet.vendor_id)
+      render "vendors/show", status: :unprocessable_entity 
+    end
   end 
 
   private 

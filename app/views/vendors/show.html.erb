@@ -8,6 +8,16 @@
 </ul>
 
 <h3>Add a Sweet to this Vendor</h3>
+<% if @vendor_sweet && @vendor_sweet.errors.any? %> 
+  <div class="error-messages">
+    <h4>Please fix the following:</h4>
+    <ul>
+      <% @vendor_sweet.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
 <%= form_with model: VendorSweet.new, url: vendor_sweets_path, local: true do |f| %>
   <%= f.hidden_field :vendor_id, value: @vendor.id %>
