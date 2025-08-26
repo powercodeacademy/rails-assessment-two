@@ -1,7 +1,26 @@
 <h1><%= @vendor.name %></h1>
+
 <p>Sweets Sold:</p>
 <ul>
 <% @vendor.sweets.each do |sweet| %>
   <li><%= link_to sweet.name, sweet_path(sweet) %></li>
 <% end %>
 </ul>
+
+<h3>Add a Sweet to this Vendor</h3>
+
+<%= form_with model: VendorSweet.new, url: vendor_sweets_path, local: true do |f| %>
+  <%= f.hidden_field :vendor_id, value: @vendor.id %>
+
+  <div>
+    <%= f.label :sweet_id, "Select Sweet" %>
+    <%= f.collection_select :sweet_id, Sweet.all, :id, :name, prompt: "Choose a sweet" %>
+  </div>
+
+  <div>
+    <%= f.label :comment %>
+    <%= f.text_field :comment %>
+  </div>
+
+  <%= f.submit "Add Sweet" %>
+<% end %>
