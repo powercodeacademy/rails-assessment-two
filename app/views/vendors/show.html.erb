@@ -1,1 +1,29 @@
 <h1><%= @vendor.name %></h1>
+
+<p><%= link_to "Back to all vendors", vendors_path %></p>
+
+<h2>Sweets sold</h2>
+<ul>
+  <% @vendor.vendor_sweets.each do |vendor_sweet| %>
+    <li><%= vendor_sweet.sweet.name %> — <%= vendor_sweet.comment %></li>
+  <% end %>
+</ul>
+
+<h2>Add a sweet</h2>
+
+<% if @vendor_sweet.errors.any? %>
+  <ul>
+    <% @vendor_sweet.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: @vendor_sweet do |f| %>
+  <%= f.hidden_field :vendor_id, value: @vendor.id %>
+  <%= f.label :sweet_id, "Sweet" %>
+  <%= f.collection_select :sweet_id, Sweet.all, :id, :name %>
+  <%= f.label :comment %>
+  <%= f.text_field :comment %>
+  <%= f.submit "Add Sweet" %>
+<% end %>
