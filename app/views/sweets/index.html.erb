@@ -1,7 +1,10 @@
 <h1>All Sweets</h1>
 
-<ul>
-  <% @sweets.each do |sweet| %>
-    <li><%= sweet.name %></li>
-  <% end  %>
+  <ul>
+    <% @sweets.each do | sweet | %>
+      <div>
+        <h2><%=link_to sweet.name, sweet %></h2>
+      </div>
+  <% end %>
 </ul>
+
